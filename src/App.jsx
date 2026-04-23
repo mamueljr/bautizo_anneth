@@ -1,3 +1,7 @@
+import anneth1 from './assets/images/anneth1.jpg'
+import parroquia from './assets/images/parroquia.jpg'
+import panchitas from './assets/images/panchitas.jpg'
+
 function App() {
   const eventDate = new Date('2026-05-09T11:00:00')
   const formattedDate = eventDate.toLocaleDateString('es-ES', { 
@@ -17,6 +21,8 @@ function App() {
 
   return (
     <div className="app">
+
+      {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-content">
           <div className="decoration-top"></div>
@@ -27,9 +33,15 @@ function App() {
           </h1>
           <p className="baby-fullname">Rojas Hernández</p>
           <p className="event-type">Mis primeros años de vida</p>
+
+          {/* Subtítulo emotivo */}
+          <p className="hero-thanks">
+            Damos gracias a Dios por la vida de nuestra hija Anneth
+          </p>
+
           <div className="decoration-bottom"></div>
           
-          <button className="scroll-btn" onClick={scrollToMaps}>
+          <button className="scroll-btn" onClick={scrollToMaps} aria-label="Ver ubicaciones">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
@@ -37,6 +49,26 @@ function App() {
         </div>
       </section>
 
+      {/* ── FAMILIA / MADRINA ── */}
+      <section className="family-section">
+        <div className="family-card">
+          <div className="family-divider"></div>
+          <p className="family-line">
+            <span className="family-label">Sus padres</span>
+            Emmanuel Rojas y Lucero Hernández
+          </p>
+          <div className="family-dot">✦</div>
+          <p className="family-line">
+            <span className="family-label">Su madrina</span>
+            Diana Teresa Hernández
+          </p>
+          <div className="family-divider"></div>
+        </div>
+      </section>
+
+
+
+      {/* ── DETALLES DEL EVENTO ── */}
       <section className="details">
         <div className="detail-card">
           <div className="detail-icon">
@@ -93,7 +125,10 @@ function App() {
         </div>
       </section>
 
+      {/* ── MAPAS ── */}
       <section id="locations" className="locations">
+
+        {/* Iglesia con foto de la parroquia */}
         <div className="location-card">
           <h2 className="location-title">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="18" height="18">
@@ -101,6 +136,17 @@ function App() {
             </svg>
             Iglesia
           </h2>
+
+          {/* Foto de la parroquia antes del mapa */}
+          <div className="parroquia-photo-wrap">
+            <img
+              src={parroquia}
+              alt="Parroquia Señor de la Misericordia"
+              className="parroquia-photo"
+              loading="lazy"
+            />
+          </div>
+
           <div className="map-container">
             <iframe 
               src={churchUrl}
@@ -128,6 +174,7 @@ function App() {
           </div>
         </div>
 
+        {/* Recepción */}
         <div className="location-card">
           <h2 className="location-title">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width="18" height="18">
@@ -135,6 +182,17 @@ function App() {
             </svg>
             Recepción
           </h2>
+
+          {/* Foto de Panchita's Farm antes del mapa */}
+          <div className="parroquia-photo-wrap">
+            <img
+              src={panchitas}
+              alt="Panchita's Farm"
+              className="parroquia-photo"
+              loading="lazy"
+            />
+          </div>
+
           <div className="map-container">
             <iframe 
               src={foodUrl}
@@ -162,13 +220,31 @@ function App() {
         </div>
       </section>
 
-      <button className="confirm-btn" onClick={() => window.open(`https://wa.me/${whatsapp}?text=Hola,%20confirmo%20mi%20asistencia%20al%20bautizo%20de%20Anneth`, '_blank')}>
-        Confirmar Asistencia
-      </button>
+      {/* ── CONFIRMAR ASISTENCIA ── */}
+      <div className="confirm-wrap">
+        <button
+          className="confirm-btn"
+          id="btn-confirmar"
+          onClick={() => window.open(`https://wa.me/${whatsapp}?text=Hola,%20confirmo%20mi%20asistencia%20al%20bautizo%20de%20Anneth`, '_blank')}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+          </svg>
+          Confirmar Asistencia
+        </button>
+      </div>
 
+      {/* ── FOOTER EMOTIVO ── */}
       <footer className="footer">
-        <p className="footer-text">Con amor, familia Rojas Hernández</p>
+        <div className="footer-ornament">✦</div>
+        <p className="footer-family">Con cariño, la familia Rojas Hernández</p>
+        <p className="footer-message">
+          Esperamos contar con tu presencia en este día tan especial
+        </p>
+        <div className="footer-ornament">✦</div>
       </footer>
+
     </div>
   )
 }

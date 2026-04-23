@@ -1,3 +1,4 @@
+/* ─── RESET & BASE ─── */
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +6,18 @@
 }
 
 :root {
-  --primary: #d4a574;
+  --primary:   #c9a962;
   --secondary: #8b7355;
-  --accent: #f5ebe0;
-  --text: #2c2416;
-  --white: #ffffff;
-  --gold: #c9a962;
+  --accent:    #f5ebe0;
+  --text:      #2c2416;
+  --text-soft: #6b5740;
+  --white:     #ffffff;
+  --gold:      #c9a962;
+  --gold-light:#e8d5a3;
+  --bg:        #faf8f5;
+  --card-bg:   #ffffff;
+  --shadow:    rgba(140, 100, 60, 0.10);
+  --shadow-md: rgba(140, 100, 60, 0.18);
 }
 
 html {
@@ -19,65 +26,74 @@ html {
 
 body {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  background: #faf8f5;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
 }
 
 .app {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* ─── HERO ─── */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, #f5ebe0 0%, #e8e0d5 100%);
+  padding: 3rem 1.75rem 2.5rem;
+  background: linear-gradient(160deg, #f9f4ee 0%, #ede3d6 60%, #e4d8c8 100%);
   text-align: center;
+  position: relative;
 }
 
 .hero-content {
   text-align: center;
+  max-width: 420px;
+  width: 100%;
 }
 
 .decoration-top {
-  width: 100px;
+  width: 120px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
 }
 
 .decoration-bottom {
-  width: 60px;
+  width: 80px;
   height: 1px;
-  background: var(--gold);
-  margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto 0;
 }
 
 .invitation-text {
-  font-size: 0.75rem;
-  letter-spacing: 0.4em;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--secondary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .baby-name {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 3rem;
+  font-size: clamp(2.4rem, 8vw, 3.4rem);
   color: var(--text);
   line-height: 1.1;
+  font-weight: 400;
 }
 
 .baby-name span {
   display: block;
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 6vw, 2rem);
   font-style: italic;
   color: var(--secondary);
+  margin-top: 0.2rem;
 }
 
 .baby-fullname {
@@ -85,55 +101,136 @@ body {
   color: var(--secondary);
   margin-top: 0.5rem;
   font-style: italic;
+  letter-spacing: 0.05em;
 }
 
 .event-type {
-  font-size: 1rem;
-  color: var(--secondary);
-  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-top: 0.75rem;
   font-style: italic;
 }
 
+/* Subtítulo de agradecimiento */
+.hero-thanks {
+  font-size: 1rem;
+  color: var(--text-soft);
+  margin-top: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  opacity: 0.9;
+}
+
 .scroll-btn {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.scroll-btn:hover {
+  transform: translateY(4px);
 }
 
 .scroll-btn svg {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   stroke: var(--secondary);
+  animation: bounce 2s ease-in-out infinite;
 }
 
-.details {
-  padding: 2rem 1.5rem;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ─── FAMILIA / MADRINA ─── */
+.family-section {
+  padding: 2.5rem 1.75rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.family-card {
+  max-width: 420px;
+  width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.family-divider {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.family-line {
+  font-size: 1rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.family-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.family-dot {
+  color: var(--gold);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+
+
+/* ─── DETALLES DEL EVENTO ─── */
+.details {
+  padding: 2rem 1.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: center;
 }
 
 .detail-card {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  background: #faf8f5;
-  border-radius: 12px;
-  border: 1px solid rgba(212,165,116,0.2);
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 18px;
+  border: 1px solid rgba(201, 169, 98, 0.2);
+  box-shadow: 0 2px 12px var(--shadow);
   text-align: left;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: 460px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.detail-card:hover {
+  box-shadow: 0 6px 22px var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .detail-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -149,53 +246,80 @@ body {
 }
 
 .detail-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--secondary);
-  margin-bottom: 0.25rem;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
 }
 
 .detail-value {
   font-size: 1rem;
   font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
 }
 
 .detail-sub {
-  font-size: 0.85rem;
-  color: var(--secondary);
+  font-size: 0.88rem;
+  color: var(--text-soft);
   font-style: italic;
+  margin-top: 0.15rem;
 }
 
+/* ─── MAPAS ─── */
 .locations {
-  padding: 1.5rem;
-  max-width: 500px;
+  padding: 1rem 1.75rem 2rem;
+  max-width: 520px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .location-card {
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .location-title {
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--secondary);
   text-align: center;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  font-weight: 400;
+}
+
+/* Foto de la parroquia */
+.parroquia-photo-wrap {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px var(--shadow);
+  border: 2px solid rgba(201, 169, 98, 0.2);
+}
+
+.parroquia-photo {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  filter: brightness(1.0) saturate(0.88);
 }
 
 .map-container {
   width: 100%;
-  height: 200px;
-  border-radius: 12px;
+  height: 210px;
+  border-radius: 18px;
   overflow: hidden;
   border: 2px solid var(--accent);
+  box-shadow: 0 2px 10px var(--shadow);
 }
 
 .map-container iframe {
@@ -205,77 +329,183 @@ body {
 }
 
 .address-box {
-  margin-top: 1rem;
-  padding: 1.25rem;
-  background: #faf8f5;
-  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 18px;
   text-align: center;
-  border: 1px solid rgba(212,165,116,0.2);
+  border: 1px solid rgba(201, 169, 98, 0.2);
+  box-shadow: 0 2px 12px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .address-text {
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: var(--text-soft);
 }
 
 .place-name {
   font-weight: 500;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  font-size: 1rem;
 }
 
 .directions-btn {
   display: inline-block;
-  padding: 0.5rem 1.25rem;
-  background: var(--primary);
+  padding: 0.55rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--white);
   text-decoration: none;
   border-radius: 50px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.directions-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ─── BOTÓN CONFIRMAR ASISTENCIA ─── */
+.confirm-wrap {
+  padding: 1.5rem 1.75rem 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .confirm-btn {
-  display: block;
-  width: calc(100% - 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
   max-width: 400px;
-  margin: 1rem auto 1.5rem;
-  padding: 1rem;
+  padding: 1.1rem 2rem;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: var(--white);
   border: none;
   border-radius: 50px;
   font-family: inherit;
   font-size: 1rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0 4px 18px rgba(201, 169, 98, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.confirm-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 169, 98, 0.45);
+}
+
+.confirm-btn:hover::after {
+  opacity: 1;
+}
+
+.confirm-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(201, 169, 98, 0.3);
+}
+
+/* ─── FOOTER ─── */
 .footer {
-  padding: 2rem;
+  padding: 3rem 2rem;
   text-align: center;
-  background: #e8e0d5;
+  background: linear-gradient(160deg, #ede3d6 0%, #e4d8c8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.footer-text {
-  font-size: 0.85rem;
-  color: var(--secondary);
+.footer-ornament {
+  color: var(--gold);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.footer-family {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--text);
   font-style: italic;
 }
 
+.footer-message {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  font-style: italic;
+  max-width: 320px;
+  line-height: 1.7;
+}
+
+/* ─── DESKTOP ─── */
 @media (min-width: 768px) {
-  .details {
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  body {
+    font-size: 18px;
   }
-  
-  .locations {
+
+  .details {
     max-width: 900px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+
+  .detail-card {
+    flex: 1 1 calc(50% - 1rem);
+    max-width: 420px;
+  }
+
+  .locations {
+    max-width: 960px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: 1.5rem 2rem 2.5rem;
+  }
+
+  .location-card {
+    flex: 1;
+  }
+
+  .photo-frame {
+    max-width: 380px;
+  }
+
+  .confirm-btn {
+    font-size: 1.05rem;
+    padding: 1.2rem 2.5rem;
+  }
+
+  .footer-family {
+    font-size: 1.35rem;
+  }
+
+  .footer-message {
+    max-width: 400px;
   }
 }
