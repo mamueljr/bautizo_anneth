@@ -10,21 +10,11 @@ View your app in AI Studio: https://ai.studio/apps/1b625034-a238-454c-adeb-464a4
 
 ## Run Locally
 
-**Prerequisites:** Node.js
+**Prerequisites:**  Node.js
+
 
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app: `npm run dev`
-
-> [!IMPORTANT]
-> Debido a la configuración de rutas, en local debes abrir:
-> http://localhost:5173/bautizo_anneth/
-
-## Deployment
-
-The app is configured to deploy automatically to GitHub Pages when you push to the `main` branch.
-
-URL: https://mamueljr.github.io/bautizo_anneth/
-
-Make sure your images are located in the `public/images/` folder.
+3. Run the app:
+   `npm run dev`

@@ -30,8 +30,6 @@ export default function InvitationContent() {
   const WHATSAPP_NUMBER = "526145604085"; // Placeholder, can be changed
   const WHATSAPP_MESSAGE = encodeURIComponent("¡Hola! Confirmo mi asistencia al bautizo de Anneth. ¡Muchas gracias!");
 
-  const BASE_URL = import.meta.env.BASE_URL;
-
   const openInMaps = (lat: number, lng: number) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank");
   };
@@ -43,7 +41,7 @@ export default function InvitationContent() {
         {/* Artistic Background Image - Anneth's foot */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={`${BASE_URL}images/anneth1.jpg`}
+            src="/images/anneth1.jpg" 
             alt="Detalle de Anneth" 
             className="w-full h-full object-cover opacity-30"
             onError={(e) => {
@@ -150,7 +148,7 @@ export default function InvitationContent() {
       >
         <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border-4 border-white">
           <img 
-            src={`${BASE_URL}images/parroquia.jpg`}
+            src="/images/parroquia.jpg" 
             alt="Parroquia Señor de la Misericordia" 
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -201,7 +199,7 @@ export default function InvitationContent() {
       >
         <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border-4 border-white">
           <img 
-            src={`${BASE_URL}images/granja.jpg`}
+            src="/images/granja.jpg" 
             alt="Granja Panchita" 
             className="w-full h-full object-cover"
             onError={(e) => {
