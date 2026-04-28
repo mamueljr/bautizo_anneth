@@ -173,7 +173,7 @@ export default function InvitationContent() {
           <div className="space-y-4 mb-8">
             <div className="flex items-center justify-center space-x-3 text-stone-600">
               <Clock className="w-4 h-4 text-brand-gold" />
-              <span>3:00 PM</span>
+              <span>2:30 PM</span>
             </div>
             <div className="flex items-start justify-center space-x-3 text-stone-600 max-w-xs mx-auto">
               <MapPin className="w-4 h-4 mt-1 flex-shrink-0 text-brand-gold" />
@@ -216,7 +216,7 @@ export default function InvitationContent() {
       <Section className="py-20">
         <h2 className="text-3xl mb-4">Confirmación</h2>
         <p className="text-stone-500 mb-10 max-w-xs mx-auto italic">
-          Tu presencia nos llenaría de alegría. Por favor, confírmanos antes del 1 de mayo.
+          Tu presencia nos llenaría de alegría. Por favor, confírmanos antes del 7 de mayo.
         </p>
         
         <a 
